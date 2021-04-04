@@ -15,7 +15,9 @@ const App = () => {
       .then((res) => res.json())
       .then((data) => {
         setTasks(data.task);
+        console.log("before");
         console.log(data.task);
+        console.log("after");
       });
   }, []);
 
