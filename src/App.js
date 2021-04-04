@@ -123,7 +123,7 @@ const App = () => {
           )}
         />
         <Route
-          path="https://task-tracker-react-flask.herokuapp.com/api/about"
+          path="/about"
           component={About}
         />
         <Footer />
