@@ -12,7 +12,7 @@ const App = () => {
   const [tasks, setTasks] = useState([])
 
   useEffect(() => {
-    fetch('/tasks').then(res => res.json()).then(data => {
+    fetch('https://task-tracker-react-flask.herokuapp.com/api/tasks').then(res => res.json()).then(data => {
       setTasks(data.task)
     });
   }, []);
@@ -74,7 +74,7 @@ const App = () => {
   //Add Task
   const addTask = async (task) => {
     console.log(task.id)
-    const res = await fetch('/tasks/add', {
+    const res = await fetch('https://task-tracker-react-flask.herokuapp.com/api/tasks/add', {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',
@@ -97,14 +97,14 @@ const App = () => {
     <Router>
       <div className="container">
         <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
-        <Route path='/' exact render={(props) => (
+        <Route path='https://task-tracker-react-flask.herokuapp.com/api/' exact render={(props) => (
           <>
             {showAddTask && <AddTask onAdd={addTask} />}
             {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} onEdit={onEdit} /> : 'No tasks to show'}
           </>
         )
        } />
-      <Route path='/about' component={About} />
+      <Route path='https://task-tracker-react-flask.herokuapp.com/api/about' component={About} />
       <Footer />
       </div>
     </Router>
