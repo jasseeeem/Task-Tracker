@@ -48,5 +48,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://jasseeeem.github.io/Task-Tracker/api/"
+  "proxy": "https://task-tracker-react-flask.herokuapp.com/api/"
 }

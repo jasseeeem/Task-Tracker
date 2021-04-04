@@ -3,7 +3,7 @@ from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
-app = Flask(__name__, static_folder="../build", static_url_path='/')
+app = Flask(__name__)
 api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
@@ -103,11 +103,6 @@ class Add(Resource):
         db.session.add(task)
         db.session.commit()
         return task, 201
-
-@app.route('/')
-def index():
-    return app.send_static_file('index.html')
-
 
 api.add_resource(Task, "/api/tasks/<int:task_id>")
 api.add_resource(Tasks, "/api/tasks")
