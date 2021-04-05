@@ -15,9 +15,6 @@ const App = () => {
       .then((res) => res.json())
       .then((data) => {
         setTasks(data.task);
-        console.log("before");
-        console.log(data.task);
-        console.log("after");
       });
   }, []);
 
@@ -76,7 +73,6 @@ const App = () => {
 
   //Add Task
   const addTask = async (task) => {
-    console.log(task.id);
     const res = await fetch(
       "https://task-tracker-react-flask.herokuapp.com/api/tasks/add",
       {
@@ -87,10 +83,7 @@ const App = () => {
         body: JSON.stringify(task),
       }
     );
-    console.log("a");
-    console.log(task);
     const data = await res.json();
-    console.log("b");
     console.log(data);
 
     setTasks([...tasks, data]);
@@ -106,7 +99,7 @@ const App = () => {
           showAdd={showAddTask}
         />
         <Route
-          path="/"
+          path="https://jasseeeem.github.io/Task-Tracker/"
           exact
           render={(props) => (
             <>
@@ -125,7 +118,7 @@ const App = () => {
           )}
         />
         <Route
-          path="/about"
+          path="https://jasseeeem.github.io/Task-Tracker/about"
           component={About}
         />
         <Footer />
