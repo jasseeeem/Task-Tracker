@@ -94,37 +94,8 @@ const App = () => {
 
   return (
     <Router>
-      <div className="container">
-        <Header
-          onAdd={() => setShowAddTask(!showAddTask)}
-          showAdd={showAddTask}
-        />
-        <Route
-          path="https://jasseeeem.github.io/Task-Tracker/"
-          exact
-          render={(props) => (
-            <>
-              {showAddTask && <AddTask onAdd={addTask} />}
-              {tasks.length > 0 ? (
-                <Tasks
-                  tasks={tasks}
-                  onDelete={deleteTask}
-                  onToggle={toggleReminder}
-                  onEdit={onEdit}
-                />
-              ) : (
-                "No tasks to show"
-              )}
-            </>
-          )}
-        />
-        <Route
-          path="https://jasseeeem.github.io/Task-Tracker/about"
-          component={About}
-        />
-        <Footer />
-      </div>
-    </Router>
+     <h1>
+Hi</h1>    </Router>
   );
 };
 
