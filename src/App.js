@@ -21,14 +21,14 @@ const App = () => {
 
   //Fetch Task
   const fetchTask = async (id) => {
-    const res = await fetch(`/tasks/${id}`);
+    const res = await fetch(`https://task-tracker-react-flask.herokuapp.com/api/tasks/${id}`);
     const data = await res.json();
     return data;
   };
 
   //Delete Task
   const deleteTask = async (id) => {
-    await fetch(`/tasks/${id}`, {
+    await fetch(`https://task-tracker-react-flask.herokuapp.com/api/tasks/${id}`, {
       method: "DELETE",
     });
     setTasks(tasks.filter((task) => task.id !== id));
@@ -38,7 +38,7 @@ const App = () => {
   const toggleReminder = async (id) => {
     const taskToToggle = await fetchTask(id);
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
-    const res = await fetch(`/tasks/${id}`, {
+    const res = await fetch(`https://task-tracker-react-flask.herokuapp.com/api/tasks/${id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
@@ -57,7 +57,7 @@ const App = () => {
   const onEdit = async (id, task) => {
     const taskToEdit = await fetchTask(id);
     const updTask = { ...taskToEdit, text: task.text, day: task.day };
-    const res = await fetch(`/tasks/${id}`, {
+    const res = await fetch(`https://task-tracker-react-flask.herokuapp.com/api/tasks/${id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
