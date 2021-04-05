@@ -105,7 +105,12 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="container">
+      <Header
+        onAdd={() => setShowAddTask(!showAddTask)}
+        showAdd={showAddTask}
+      />
+
       {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
         <Tasks
