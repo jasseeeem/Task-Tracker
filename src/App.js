@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AddTask from "./components/AddTask";
 import About from "./components/About";
+import { HashRouter, Route, Link } from "react-router-dom";
 
 const App = () => {
   const [showAddTask, setShowAddTask] = useState(false);
@@ -105,25 +106,38 @@ const App = () => {
   };
 
   return (
-    <div className="container">
-      <Header
-        onAdd={() => setShowAddTask(!showAddTask)}
-        showAdd={showAddTask}
-      />
-
-      {showAddTask && <AddTask onAdd={addTask} />}
-      {tasks.length > 0 ? (
-        <Tasks
-          tasks={tasks}
-          onDelete={deleteTask}
-          onToggle={toggleReminder}
-          onEdit={onEdit}
+<HashRouter basename='/'>
+      <div className="container">
+        <Header
+          onAdd={() => setShowAddTask(!showAddTask)}
+          showAdd={showAddTask}
         />
-      ) : (
-        "No tasks to show"
-      )}
-    </div>
-  );
+        <Route
+          path="/"
+          exact
+          render={(props) => (
+            <>
+              {showAddTask && <AddTask onAdd={addTask} />}
+              {tasks.length > 0 ? (
+                <Tasks
+                  tasks={tasks}
+                  onDelete={deleteTask}
+                  onToggle={toggleReminder}
+                  onEdit={onEdit}
+                />
+              ) : (
+                "No tasks to show"
+              )}
+            </>
+          )}
+        />
+        <Route
+          path="/about"
+          component={About}
+        />
+        <Footer />
+      </div>
+    </HashRouter>  );
 };
 
 export default App;
