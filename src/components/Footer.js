@@ -4,7 +4,7 @@ function Footer() {
     return (
         <footer>
             <p>Copyright &copy; 2021 Jaseem</p>
-            <Link to='/about'>About</Link>
+            <Link to='https://jasseeeem.github.io/Task-Tracker/about'>About</Link>
         </footer>
     )
 }

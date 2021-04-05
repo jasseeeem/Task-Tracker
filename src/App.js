@@ -16,6 +16,7 @@ const App = () => {
       .then((data) => {
         setTasks(data.task);
       });
+      console.log('fetched')
   }, []);
 
   //Fetch Task
