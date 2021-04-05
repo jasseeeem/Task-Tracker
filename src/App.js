@@ -93,16 +93,17 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="container">
+    // <Router>
+    //   <div className="container">
+    <>
         <Header
           onAdd={() => setShowAddTask(!showAddTask)}
           showAdd={showAddTask}
         />
-        <Route
+        {/* <Route
           path="/"
           exact
-          render={(props) => (
+          render={(props) => ( */}
             <>
               {showAddTask && <AddTask onAdd={addTask} />}
               {tasks.length > 0 ? (
@@ -116,15 +117,16 @@ const App = () => {
                 "No tasks to show"
               )}
             </>
-          )}
-        />
-        <Route
+          {/* )} */}
+        {/* /> */}
+        {/* <Route
           path="/about"
-          component={About}
-        />
-        <Footer />
+          component={About} */}
+        {/* /> */}
+        {/* <Footer />
       </div>
-    </Router>
+    </Router> */}
+  </>
   );
 };
 
