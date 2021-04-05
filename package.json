@@ -1,6 +1,6 @@
 {
-  "homepage": "http://jasseeeem.github.io/Task-Tracker",
-  "name": "Task Tracker",
+  "homepage": "http://jasseeeem.github.io",
+  "name": "TaskTracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

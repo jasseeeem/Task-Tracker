@@ -99,7 +99,6 @@ const App = () => {
   };
 
   return (
-    console.log("beg")
     <Router>
       <div className="container">
         <Header
