@@ -106,7 +106,7 @@ const App = () => {
           showAdd={showAddTask}
         />
         <Route
-          path="https://task-tracker-react-flask.herokuapp.com/api/"
+          path="/"
           exact
           render={(props) => (
             <>
