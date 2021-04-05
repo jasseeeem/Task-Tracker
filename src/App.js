@@ -93,13 +93,8 @@ const App = () => {
   };
 
   return (
-    <>
-        <Header
-          onAdd={() => setShowAddTask(!showAddTask)}
-          showAdd={showAddTask}
-        />
-            <>
-              {showAddTask && <AddTask onAdd={addTask} />}
+    <div>
+      {showAddTask && <AddTask onAdd={addTask} />}
               {tasks.length > 0 ? (
                 <Tasks
                   tasks={tasks}
@@ -110,8 +105,7 @@ const App = () => {
               ) : (
                 "No tasks to show"
               )}
-            </>
-  </>
+    </div>
   );
 };
 
