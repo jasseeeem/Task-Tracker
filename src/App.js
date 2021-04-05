@@ -36,6 +36,11 @@ const App = () => {
 
   //Toggle Reminder
   const toggleReminder = async (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: ! task.reminder } : task
+      )
+    );
     const taskToToggle = await fetchTask(id);
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
     const res = await fetch(`https://task-tracker-react-flask.herokuapp.com/api/tasks/${id}`, {
@@ -46,11 +51,6 @@ const App = () => {
       body: JSON.stringify(updTask),
     });
     const data = await res.json();
-    setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, reminder: data.reminder } : task
-      )
-    );
   };
 
   //Edit Task
@@ -93,17 +93,7 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="container">
-        <Header
-          onAdd={() => setShowAddTask(!showAddTask)}
-          showAdd={showAddTask}
-        />
-        <Route
-          path="https://jasseeeem.github.io/Task-Tracker/"
-          exact
-          render={(props) => (
-            <>
+      <div>
               {showAddTask && <AddTask onAdd={addTask} />}
               {tasks.length > 0 ? (
                 <Tasks
@@ -115,16 +105,7 @@ const App = () => {
               ) : (
                 "No tasks to show"
               )}
-            </>
-          )}
-        />
-        <Route
-          path="/about"
-          component={About}
-        />
-        <Footer />
-      </div>
-    </Router>
+            </div>
   );
 };
 
