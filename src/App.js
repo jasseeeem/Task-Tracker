@@ -2,10 +2,9 @@ import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import AddTask from "./components/AddTask";
 import About from "./components/About";
-import { HashRouter, Route, Link } from "react-router-dom";
 
 const App = () => {
   const [showAddTask, setShowAddTask] = useState(false);
@@ -17,7 +16,6 @@ const App = () => {
       .then((data) => {
         setTasks(data.task);
       });
-    console.log("fetched");
   }, []);
 
   //Fetch Task
@@ -88,7 +86,7 @@ const App = () => {
 
   //Add Task
   const addTask = async (task) => {
-    setTasks([...tasks, data]);
+    setShowAddTask(!showAddTask);
     const res = await fetch(
       "https://task-tracker-react-flask.herokuapp.com/api/tasks/add",
       {
@@ -100,13 +98,11 @@ const App = () => {
       }
     );
     const data = await res.json();
-    console.log(data);
-
-    setShowAddTask(!showAddTask);
+    setTasks([...tasks, data]);
   };
 
   return (
-<HashRouter basename='/'>
+<Router>
       <div className="container">
         <Header
           onAdd={() => setShowAddTask(!showAddTask)}
@@ -137,7 +133,7 @@ const App = () => {
         />
         <Footer />
       </div>
-    </HashRouter>  );
+    </Router>  );
 };
 
 export default App;
